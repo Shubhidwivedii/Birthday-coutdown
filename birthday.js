@@ -14,29 +14,15 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
-// 🎂 BIRTHDAY DATE (DO NOT CHANGE FORMAT)
-const BIRTHDAY_YEAR = 2026;
-const BIRTHDAY_MONTH = 0; // January (0-based)
-const BIRTHDAY_DATE = 14;
-
-// 🎯 TARGET DATE FOR COUNTDOWN (MIDNIGHT)
-const targetTime = new Date(
-    BIRTHDAY_YEAR,
-    BIRTHDAY_MONTH,
-    BIRTHDAY_DATE,
-    0, 0, 0
-).getTime();
+// 🎂 BIRTHDAY TARGET (14 JAN 2026 – MIDNIGHT)
+const targetTime = new Date("2026-01-14T00:00:00").getTime();
 
 const interval = setInterval(() => {
-    const now = new Date();
+    const now = new Date().getTime();
+    const difference = targetTime - now;
 
-    // ✅ DATE-ONLY CHECK (NO TIME BUGS)
-    const isBirthday =
-        now.getFullYear() === BIRTHDAY_YEAR &&
-        now.getMonth() === BIRTHDAY_MONTH &&
-        now.getDate() === BIRTHDAY_DATE;
-
-    if (isBirthday) {
+    // 🎉 BIRTHDAY REACHED
+    if (difference <= 0) {
         clearInterval(interval);
 
         countertimer.style.display = "none";
@@ -49,13 +35,10 @@ const interval = setInterval(() => {
         return;
     }
 
-    // ⏳ COUNTDOWN CALCULATION
-    const nowTime = now.getTime();
-    const difference = targetTime - nowTime;
-
-    daysEl.innerText = Math.max(0, Math.floor(difference / DAY));
-    hoursEl.innerText = Math.max(0, Math.floor((difference % DAY) / HOUR));
-    minutesEl.innerText = Math.max(0, Math.floor((difference % HOUR) / MINUTE));
-    secondsEl.innerText = Math.max(0, Math.floor((difference % MINUTE) / SECOND));
+    // ⏳ COUNTDOWN
+    daysEl.innerText = Math.floor(difference / DAY);
+    hoursEl.innerText = Math.floor((difference % DAY) / HOUR);
+    minutesEl.innerText = Math.floor((difference % HOUR) / MINUTE);
+    secondsEl.innerText = Math.floor((difference % MINUTE) / SECOND);
 
 }, 1000);
