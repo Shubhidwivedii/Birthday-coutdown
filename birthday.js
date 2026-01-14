@@ -1,62 +1,61 @@
-const dayselement=document.querySelector(".days");
-const hourselement=document.querySelector(".hours");
-const minuteselement=document.querySelector(".minutes");
-const secondselement=document.querySelector(".seconds");
-const heading=document.querySelector("h1");
-const countertimer=document.querySelector(".countertimer");
-const paragraph=document.querySelector(".note");
+// ELEMENTS
+const daysEl = document.querySelector(".days");
+const hoursEl = document.querySelector(".hours");
+const minutesEl = document.querySelector(".minutes");
+const secondsEl = document.querySelector(".seconds");
+const heading = document.querySelector("h1");
+const countertimer = document.querySelector(".countertimer");
+const paragraph = document.querySelector(".note");
+const container = document.querySelector(".container");
 
-const second =1000,
-minute=60*second,
-hour=60*minute,
-day=24*hour;
+// TIME CONSTANTS
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
 
-const timerfunction=()=>{
-    // let now=new Date();
-    // let dd=String(now.getDate()).padStart(2,"0"),
-    // mm=String(now.getMonth()).padStart(2,"0");
-    // yyyy=now.getFullYear();
-    // const enteredday=prompt("Enter day").padStart(2,"0");
-    // const enteredmonth=prompt("Enter month").padStart(2,"0");
-    // now=`${mm}/${dd}/${yyyy}`;
-    // let targetDate=`${enteredmonth}/${enteredday}/${yyyy}`;
-    // if(now>targetDate){
-    //     targetDate=`${enteredmonth}/${enteredday}/${yyyy+1}`
-    // }
+// 🎂 BIRTHDAY DATE (DO NOT CHANGE FORMAT)
+const BIRTHDAY_YEAR = 2026;
+const BIRTHDAY_MONTH = 0; // January (0-based)
+const BIRTHDAY_DATE = 14;
 
-    const interval=setInterval(()=>{
-    const timer =new Date(2026, 0, 14, 0, 0, 0).getTime();
-    const today= new Date().getTime();
-    const difference =timer-today;
+// 🎯 TARGET DATE FOR COUNTDOWN (MIDNIGHT)
+const targetTime = new Date(
+    BIRTHDAY_YEAR,
+    BIRTHDAY_MONTH,
+    BIRTHDAY_DATE,
+    0, 0, 0
+).getTime();
 
-    if (difference <= 0) {
+const interval = setInterval(() => {
+    const now = new Date();
+
+    // ✅ DATE-ONLY CHECK (NO TIME BUGS)
+    const isBirthday =
+        now.getFullYear() === BIRTHDAY_YEAR &&
+        now.getMonth() === BIRTHDAY_MONTH &&
+        now.getDate() === BIRTHDAY_DATE;
+
+    if (isBirthday) {
         clearInterval(interval);
+
         countertimer.style.display = "none";
-        container.classList.add("birthday"); 
-        heading.innerText = "🎉 HAPPIEST BIRTHDAY ADITYA🎉";
-        paragraph.innerText="I never say I’m proud of you, but I’m the most proud of the man you have become.I never say I love you enough, but I love you the most.I never say you are funny, but you make me laugh the most.I never say you are handsome, but for me, you are the most handsome man.I wished main wahan hoti tumhare paas, tumhe hug karne ke liye.Trust me, jab main wapas aaungi, I will celebrate your birthday the way you want if you know, you know.💫🎂";
+        container.classList.add("birthday");
+
+        heading.innerText = "🎉 HAPPIEST BIRTHDAY ADITYA 🎉";
+        paragraph.innerText =
+            "I never say I’m proud of you, but I’m the most proud of the man you have become. I never say I love you enough, but I love you the most. I wished main wahan hoti tumhare paas, tumhe hug karne ke liye. Trust me, jab main wapas aaungi, I will celebrate your birthday the way you want — if you know, you know. 💫🎂";
+
         return;
     }
-    // console.log(timer);
-    // console.log(today);
-    // console.log(difference);
-    const leftday=Math.floor(difference/day);
-    const lefthour=Math.floor((difference%day)/hour);
-    const leftminute=Math.floor((difference%hour)/minute);
-    const leftsecond=Math.floor((difference%minute)/second);
-    dayselement.innerText=leftday;
-    hourselement.innerText=lefthour;
-    minuteselement.innerText=leftminute;
-    secondselement.innerText=leftsecond;
-    // console.log(`${leftday}:${lefthour}:${leftminute}:${leftsecond}`)
 
+    // ⏳ COUNTDOWN CALCULATION
+    const nowTime = now.getTime();
+    const difference = targetTime - nowTime;
 
-    },1000);
-};
-timerfunction();
+    daysEl.innerText = Math.max(0, Math.floor(difference / DAY));
+    hoursEl.innerText = Math.max(0, Math.floor((difference % DAY) / HOUR));
+    minutesEl.innerText = Math.max(0, Math.floor((difference % HOUR) / MINUTE));
+    secondsEl.innerText = Math.max(0, Math.floor((difference % MINUTE) / SECOND));
 
-
-
-
-
-
+}, 1000);
