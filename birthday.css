@@ -17,7 +17,15 @@
 }
 .container.birthday {
     background-image: url("./birthday-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
+.container {
+    transition: background-image 1.5s ease-in-out;
+}
+
 
 h1{
     text-transform: uppercase;
@@ -52,5 +60,26 @@ h1{
     background-color: rgb(73, 43, 43);
     border-radius: 20%;
 }
+.note {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.6;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+.note {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
 
 
