@@ -79,7 +79,7 @@ h1{
         opacity: 1;
     }
 }
-/* FLOATING HEARTS */
+/* 💖 Floating Hearts */
 .heart {
     position: fixed;
     bottom: -20px;
@@ -89,15 +89,35 @@ h1{
 }
 
 @keyframes floatUp {
-    from {
+    0% {
         transform: translateY(0);
         opacity: 1;
     }
-    to {
-        transform: translateY(-110vh);
+    100% {
+        transform: translateY(-100vh);
         opacity: 0;
     }
 }
+
+/* 🎉 Confetti */
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    animation: fall 4s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
 
 
 
