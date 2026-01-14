@@ -16,7 +16,7 @@
     text-align: center;
 }
 .container.birthday {
-    background-image: url("birthday-bg.png");
+    background-image: url("./birthday-bg.png");
 }
 
 h1{
@@ -52,4 +52,5 @@ h1{
     background-color: rgb(73, 43, 43);
     border-radius: 20%;
 }
+
 
