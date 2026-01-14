@@ -32,6 +32,7 @@ const timerfunction=()=>{
     if (difference <= 0) {
         clearInterval(interval);
         countertimer.style.display = "none";
+        container.classList.add("birthday"); 
         heading.innerText = "🎉 HAPPIEST BIRTHDAY ADITYA🎉";
         paragraph.innerText="I never say I’m proud of you, but I’m the most proud of the man you have become.I never say I love you enough, but I love you the most.I never say you are funny, but you make me laugh the most.I never say you are handsome, but for me, you are the most handsome man.I wished main wahan hoti tumhare paas, tumhe hug karne ke liye.Trust me, jab main wapas aaungi, I will celebrate your birthday the way you want if you know, you know.💫🎂";
         return;
@@ -53,6 +54,7 @@ const timerfunction=()=>{
     },1000);
 };
 timerfunction();
+
 
 
 
