@@ -12,20 +12,20 @@ hour=60*minute,
 day=24*hour;
 
 const timerfunction=()=>{
-    let now=new Date();
-    let dd=String(now.getDate()).padStart(2,"0"),
-    mm=String(now.getMonth()).padStart(2,"0");
-    yyyy=now.getFullYear();
-    const enteredday=prompt("Enter day").padStart(2,"0");
-    const enteredmonth=prompt("Enter month").padStart(2,"0");
-    now=`${mm}/${dd}/${yyyy}`;
-    let targetDate=`${enteredmonth}/${enteredday}/${yyyy}`;
-    if(now>targetDate){
-        targetDate=`${enteredmonth}/${enteredday}/${yyyy+1}`
-    }
+    // let now=new Date();
+    // let dd=String(now.getDate()).padStart(2,"0"),
+    // mm=String(now.getMonth()).padStart(2,"0");
+    // yyyy=now.getFullYear();
+    // const enteredday=prompt("Enter day").padStart(2,"0");
+    // const enteredmonth=prompt("Enter month").padStart(2,"0");
+    // now=`${mm}/${dd}/${yyyy}`;
+    // let targetDate=`${enteredmonth}/${enteredday}/${yyyy}`;
+    // if(now>targetDate){
+    //     targetDate=`${enteredmonth}/${enteredday}/${yyyy+1}`
+    // }
 
     const interval=setInterval(()=>{
-    const timer =new Date(targetDate).getTime();
+    const timer =new Date(01/17/2025).getTime();
     const today= new Date().getTime();
     const difference =timer-today;
 
@@ -53,3 +53,4 @@ const timerfunction=()=>{
     },1000);
 };
 timerfunction();
+
