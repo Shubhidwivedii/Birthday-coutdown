@@ -25,7 +25,7 @@ const timerfunction=()=>{
     // }
 
     const interval=setInterval(()=>{
-    const timer =new Date("01/17/2026").getTime();
+    const timer =new Date("01/14/2026").getTime();
     const today= new Date().getTime();
     const difference =timer-today;
 
@@ -54,6 +54,7 @@ const timerfunction=()=>{
     },1000);
 };
 timerfunction();
+
 
 
 
