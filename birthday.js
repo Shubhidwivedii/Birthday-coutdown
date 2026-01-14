@@ -15,7 +15,7 @@ const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
 // 🎂 BIRTHDAY DATE
-const targetTime = new Date("2026-01-15T00:00:00").getTime();
+const targetTime = new Date("2026-01-17T00:00:00").getTime();
 
 // 🎉 CONFETTI FUNCTION
 function createConfetti() {
@@ -69,6 +69,7 @@ const interval = setInterval(() => {
     secondsEl.innerText = Math.floor((difference % MINUTE) / SECOND);
 
 }, 1000);
+
 
 
 
