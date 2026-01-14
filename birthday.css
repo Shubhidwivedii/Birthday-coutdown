@@ -15,6 +15,10 @@
     flex-direction: column;
     text-align: center;
 }
+.container.birthday {
+    background-image: url("birthday-bg.png");
+}
+
 h1{
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -48,3 +52,4 @@ h1{
     background-color: rgb(73, 43, 43);
     border-radius: 20%;
 }
+
